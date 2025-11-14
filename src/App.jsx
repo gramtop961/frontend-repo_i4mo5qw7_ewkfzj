@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import Spline from '@splinetool/react-spline'
 import { Check, ArrowRight, Store, Users, Clock, TrendingDown, Sparkles, Shield } from 'lucide-react'
+import RetailerDashboard from './components/RetailerDashboard'
 
 const COLORS = {
   dark: '#0e0e2c',
@@ -75,16 +76,16 @@ export default function App() {
 
   const comparison = useMemo(() => ([
     { label: 'Baisse automatique des prix', lastdrop: true, traditional: false },
-    { label: 'Ecoulement des stocks plus rapide', lastdrop: true, traditional: 'parfois' },
-    { label: 'Protège les fen\u00eatres de prix de la marque', lastdrop: true, traditional: false },
-    { label: 'La raret\u00e9 en temps r\u00e9el booste la conversion', lastdrop: true, traditional: false },
-    { label: 'Mise en place simple, sans d\u00e9v sur-mesure', lastdrop: true, traditional: 'variable' },
+    { label: 'Écoulement des stocks plus rapide', lastdrop: true, traditional: 'parfois' },
+    { label: 'Protège les fenêtres de prix de la marque', lastdrop: true, traditional: false },
+    { label: 'La rareté en temps réel booste la conversion', lastdrop: true, traditional: false },
+    { label: 'Mise en place simple, sans dév sur-mesure', lastdrop: true, traditional: 'variable' },
   ]), [])
 
   const demoProducts = [
     { id: 1, name: 'Casque sans fil', start: 129, floor: 79, timeLeft: '1h 22m', drop: '-3%' },
     { id: 2, name: 'Montre connectée Pro', start: 199, floor: 129, timeLeft: '3h 10m', drop: '-7%' },
-    { id: 3, name: 'Caméra d\u2019action 4K', start: 249, floor: 159, timeLeft: '45m', drop: '-5%' },
+    { id: 3, name: 'Caméra d’action 4K', start: 249, floor: 159, timeLeft: '45m', drop: '-5%' },
   ]
 
   return (
@@ -102,10 +103,14 @@ export default function App() {
             <a href="#retailers" className="hover:text-white">Enseignes</a>
             <a href="#customers" className="hover:text-white">Consommateurs</a>
             <a href="#compare" className="hover:text-white">Comparaison</a>
+            <a href="#pro" className="hover:text-white">Espace Pro</a>
           </div>
-          <a href="#contact" className="inline-flex items-center gap-2 bg-[\#f36f2b] hover:brightness-110 text-white font-semibold px-4 py-2 rounded-lg transition">
-            Commencer <ArrowRight size={18} />
-          </a>
+          <div className="flex items-center gap-2">
+            <a href="#products" className="hidden sm:inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/15 text-white px-4 py-2 rounded-lg">Voir les drops</a>
+            <a href="#contact" className="inline-flex items-center gap-2 bg-[\#f36f2b] hover:brightness-110 text-white font-semibold px-4 py-2 rounded-lg transition">
+              Commencer <ArrowRight size={18} />
+            </a>
+          </div>
         </div>
       </header>
 
@@ -121,23 +126,23 @@ export default function App() {
               <Sparkles size={14} className="text-[\#f36f2b]" /> Plateforme de déstockage dynamique
             </div>
             <h1 className="mt-4 text-4xl md:text-5xl font-extrabold leading-tight">
-              Transformez vos invendus en succès grâce à des prix qui baissent avec le temps
+              Des prix qui baissent. Des paniers qui montent.
             </h1>
             <p className="mt-4 text-white/70 text-lg">
-              LastDrop réduit automatiquement les prix jusqu\'à la vente — protège vos marges, accélère l\'écoulement et ravit les chasseurs de bonnes affaires.
+              Attendez le bon moment ou sécurisez le deal maintenant. Une expérience ludique et transparente, pensée pour déclencher l’achat.
             </p>
             <div className="mt-6 flex flex-col sm:flex-row gap-3">
-              <a href="#contact" className="inline-flex items-center justify-center gap-2 bg-[\#f36f2b] hover:brightness-110 text-white font-semibold px-5 py-3 rounded-lg">
-                Nous contacter <ArrowRight size={18} />
-              </a>
               <a href="#products" className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/15 text-white px-5 py-3 rounded-lg">
-                Voir les drops en direct
+                Explorer les drops
+              </a>
+              <a href="#pro" className="inline-flex items-center justify-center gap-2 bg-[\#f36f2b] hover:brightness-110 text-white font-semibold px-5 py-3 rounded-lg">
+                Créer un compte pro <ArrowRight size={18} />
               </a>
             </div>
             <div className="mt-8 grid grid-cols-3 gap-3">
-              <Stat label="Relèvement moyen du taux d\'écoulement" value="+38%" />
+              <Stat label="+ de conversion" value="+18%" />
               <Stat label="Temps de mise en place" value="< 1 jour" />
-              <Stat label="Enseignes int\u00e9gr\u00e9es" value="120+" />
+              <Stat label="Enseignes intégrées" value="120+" />
             </div>
           </div>
           <div className="relative h-[420px] md:h-[520px] rounded-2xl overflow-hidden border border-white/10 bg-black/30">
@@ -211,11 +216,12 @@ export default function App() {
           <SectionTitle
             eyebrow="Pour les acheteurs"
             title="Le frisson de viser le moment parfait"
+            subtitle="Des prix qui bougent, une transparence totale et des quantités limitées : l’équilibre parfait entre jeu et bonne affaire."
           />
           <div className="mt-10 grid md:grid-cols-3 gap-6">
             <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
               <h4 className="font-semibold">Suivez la baisse</h4>
-              <p className="text-white/70 mt-2">Voyez les prix diminuer en direct jusqu\'à ce que quelqu\'un achète. Attendre ou acheter maintenant — à vous de jouer.</p>
+              <p className="text-white/70 mt-2">Voyez les prix diminuer en direct jusqu'à ce que quelqu'un achète. Attendre ou acheter maintenant — à vous de jouer.</p>
             </div>
             <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
               <h4 className="font-semibold">Limites transparentes</h4>
@@ -223,7 +229,7 @@ export default function App() {
             </div>
             <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
               <h4 className="font-semibold">Rareté réelle</h4>
-              <p className="text-white/70 mt-2">Quantités limitées et fenêtres de temps rendent l\'expérience excitante et équitable.</p>
+              <p className="text-white/70 mt-2">Quantités limitées et fenêtres de temps rendent l'expérience excitante et équitable.</p>
             </div>
           </div>
         </div>
@@ -291,6 +297,27 @@ export default function App() {
         </div>
       </section>
 
+      {/* Pro Area */}
+      <section id="pro" className="py-16 md:py-24 border-t border-white/10">
+        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-10 items-start">
+          <div>
+            <SectionTitle
+              eyebrow="Espace professionnel"
+              title="Gérez vos commandes et vos drops"
+              subtitle="Créez un compte pour accéder à votre tableau de bord, suivre vos commandes et lancer vos campagnes LastDrop."
+            />
+            <div className="mt-8 p-6 rounded-2xl bg-[rgba(243,111,43,0.08)] border border-[rgba(243,111,43,0.25)]">
+              <ul className="space-y-2 text-white/80 text-sm">
+                <li className="flex items-center gap-2"><Check size={16} className="text-[\#f36f2b]" /> Création de compte en 1 minute</li>
+                <li className="flex items-center gap-2"><Check size={16} className="text-[\#f36f2b]" /> Suivi en temps réel</li>
+                <li className="flex items-center gap-2"><Check size={16} className="text-[\#f36f2b]" /> Export CSV / intégrations</li>
+              </ul>
+            </div>
+          </div>
+          <RetailerDashboard baseUrl={baseUrl} />
+        </div>
+      </section>
+
       {/* CTA + Contact */}
       <section id="contact" className="py-16 md:py-24 border-t border-white/10">
         <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-10 items-start">
@@ -336,7 +363,7 @@ export default function App() {
                 <textarea value={lead.message} onChange={(e)=>setLead(v=>({...v,message:e.target.value}))} rows={4} className="mt-1 w-full px-3 py-2 rounded-lg bg-white/10 border border-white/10 outline-none focus:border-[\#f36f2b]" placeholder="Dites-nous ce que vous souhaitez atteindre…" />
               </div>
               <label className="sm:col-span-2 flex items-center gap-2 text-sm text-white/70">
-                <input type="checkbox" checked={lead.consent} onChange={(e)=>setLead(v=>({...v,consent:e.target.checked}))} /> J\'accepte d\'être contacté(e) au sujet de LastDrop.
+                <input type="checkbox" checked={lead.consent} onChange={(e)=>setLead(v=>({...v,consent:e.target.checked}))} /> J'accepte d'être contacté(e) au sujet de LastDrop.
               </label>
             </div>
 
